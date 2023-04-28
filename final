@@ -14,11 +14,10 @@ def method():
     # elif(c==2):
     #     return 2
     # elif(c==3):
-    #     return 3        
+    #     return 3
     # else:
     #     print('wrong number, using Default method')
         return 1
-       
 
 method_chosen = method()
 
@@ -41,13 +40,13 @@ def is_ips_port_open(ip):
         s.settimeout(0.5)
         print(ip)
         if(method_chosen==1):
-            return s.connect_ex((ip,54321)) == 0       
+            return s.connect_ex((ip,54321)) == 0
         # elif(method_chosen==2):
         #     return s.connect_ex((ip,80)) == 0
         # elif(method_chosen==3):
         #     return s.connect_ex((ip,8080)) == 0
         else:
-            print("eroooooooooooooooooooooooooooooooooooooooor")    
+            print("eroooooooooooooooooooooooooooooooooooooooor")
 
 
 def check_alive_ips(count,ip):
@@ -55,22 +54,26 @@ def check_alive_ips(count,ip):
     if(conn):
         count+=1
         print ("Port is open for :))))))))))",ip)
-        with open("ips_with_open_ports.txt","a") as inp:
+        with open("ips_with_open_ports.html","a") as inp:
             ip=str(ip)
             if(method_chosen==1):
-                methdname = 'v2ray found! port is 54321 and Ip is :'
+                methdname = 'v2ray found!Ip is '
             # if(method_chosen==2):
             #     methdname = 'http(80)'
             # if(method_chosen==3):
-            #     methdname = 'http(8080)'        
-            inp.write(methdname)
-            inp.write('://')            
+            #     methdname = 'http(8080)'
+            inp.write('<a href="http://')
             inp.write(ip)
+            inp.write(':54321"')
+            inp.write(' target="_blank" >')
+            inp.write(ip)
+            inp.write(':54321 </a>')
             inp.write('\n')
+            inp.write('<br>')
     else:
         print ("Port is not open for ",ip)
         print("======================================")
-    return count            
+    return count
 
 
 def ips2array():
@@ -120,10 +123,10 @@ def main():
 print("===========================================================")
 print("Iran Proxy BY Nic")
 print("===========================================================")
-if os.path.isfile('ips_with_open_ports.txt'):
-    alive_num = sum(1 for line in open('ips_with_open_ports.txt'))
+if os.path.isfile('ips_with_open_ports.html'):
+    alive_num = sum(1 for line in open('ips_with_open_ports.html'))
 else:
     alive_num = 0
 print('alive num is',alive_num)
-while (alive_num<100):
+while (alive_num<100000):
     main()
